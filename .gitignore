@@ -1,0 +1,4 @@
+/node_modules/
+.vscode/settings.json
+build/demetria.js
+build/demetria.min.js
