@@ -1,11 +1,11 @@
-import { generateFormInputs, renderFormInputs } from "./generator/index";
+import { generateFormInputs } from "./generator/index";
 
 (function(window){
 	function demetria(init) {
-		
-		let formInputs = generateFormInputs(init.inputs);
-		renderFormInputs(formInputs, "here");
 
+		history.pushState({}, "formstep1", "#1");
+
+		generateFormInputs("here", init.form["1"].inputs, init.inputContainer);
 		let outputObject = {};
 		
 		// Function to test with the library is loaded correctly.

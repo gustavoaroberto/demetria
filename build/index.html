@@ -7,10 +7,20 @@
 		<form id="here">
 
 		</form>
+		<button>Voltar</button>
+		<button>Avançar</button>
 		<script src="demetria.js"></script>
 		<script>
 			demetria({
-				inputs: ["cpf", "nome", "telefone"]
+				inputContainer: {
+					active: true,
+					className: "form-group"
+				},
+				form: {
+					1: {
+						inputs: ["cpf", "nome", "telefone"]
+					}
+				}
 			});
 		</script>
 	</body>
