@@ -1,29 +1,64 @@
 {
   "name": "demetria",
-  "version": "0.0.2",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Schema-driven multi-step HTML forms for any JavaScript application.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "lint": "eslint src test eslint.config.js vitest.config.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "verify:consumer": "npm run build && tsc -p tsconfig.consumer.json",
+    "package:check": "npm pack --dry-run --ignore-scripts",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "release:check": "npm run format:check && npm run check && tsc -p tsconfig.consumer.json && npm run package:check",
+    "prepack": "npm run check"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gustavoaroberto/demetria.git"
   },
-  "author": "Gus",
-  "license": "ISC",
+  "keywords": [
+    "forms",
+    "form-validation",
+    "multi-step-form",
+    "schema-driven",
+    "typescript",
+    "vanilla-javascript",
+    "wizard"
+  ],
+  "author": "Gustavo A. Roberto",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/gustavoaroberto/demetria/issues"
   },
   "homepage": "https://github.com/gustavoaroberto/demetria#readme",
-  "description": "",
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
-    "@typescript-eslint/parser": "^7.14.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "husky": "^9.0.11",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.2"
+    "@eslint/js": "10.0.1",
+    "eslint": "10.13.0",
+    "eslint-config-prettier": "10.1.8",
+    "jsdom": "29.1.1",
+    "prettier": "3.9.10",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.0",
+    "vitest": "5.0.5"
   }
 }
