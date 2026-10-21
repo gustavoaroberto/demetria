@@ -23,4 +23,5 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run verify:consumer
+      - run: npm run docs:check
       - run: npm pack --dry-run

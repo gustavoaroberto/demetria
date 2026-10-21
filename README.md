@@ -105,23 +105,35 @@ form.mount();
 `next`, and `previous`. The generated Next, Previous, and Complete controls use
 the same navigation operations.
 
-## Schema and values
+## Required, optional, and typed values
 
 Schemas contain a non-empty `id` and one or more steps. Step IDs and field names
 must be unique. Identifiers start with a letter and contain only letters,
 numbers, underscores, or hyphens. A field name identifies its value throughout
 the entire form.
 Schemas must contain data only: callbacks belong in `createForm` options, never
-inside the schema.
+inside the schema. A field is required only when `required: true`; omitting the
+property has exactly the same behavior as `required: false`.
 
-| Type       | Default | Stored value           | Built-in validation             |
-| ---------- | ------- | ---------------------- | ------------------------------- |
-| `text`     | `""`    | string                 | required/non-empty              |
-| `email`    | `""`    | string                 | required and basic email format |
-| `number`   | `""`    | number or empty string | finite number                   |
-| `select`   | `""`    | selected option string | required and known option       |
-| `checkbox` | `false` | boolean                | required means checked          |
-| `textarea` | `""`    | string                 | required/non-empty              |
+```js
+{ name: 'name', type: 'text', label: 'Name', required: true }
+{ name: 'email', type: 'email', label: 'Email' } // optional
+{ name: 'phone', type: 'text', label: 'Phone', required: false } // optional
+```
+
+An empty optional field passes validation. A non-empty optional value is still
+validated according to its field type. In 0.1.0, only `""`, `null`, and
+`undefined` count as empty; whitespace-only text is not trimmed and therefore
+passes required text validation.
+
+| Type       | Default | Stored value           | Built-in validation              |
+| ---------- | ------- | ---------------------- | -------------------------------- |
+| `text`     | `""`    | string                 | string; non-empty when required  |
+| `email`    | `""`    | string                 | basic email format when provided |
+| `number`   | `""`    | number or empty string | finite number when provided      |
+| `select`   | `""`    | selected option string | declared option when provided    |
+| `checkbox` | `false` | boolean                | required means exactly `true`    |
+| `textarea` | `""`    | string                 | string; non-empty when required  |
 
 `defaultValue` must match the field's stored value type. Select fields require a
 non-empty `options` array of `{ label, value }` objects. Invalid schemas throw a
@@ -188,9 +200,14 @@ Demetria ships no CSS. Stable hooks include:
 - `data-demetria-form`, `data-demetria-step`, `data-demetria-field`, and
   `data-demetria-action`
 
-## Examples
+## Documentation and examples
 
-Build the library, serve the repository root over HTTP, then open:
+The static documentation source lives in [`website/`](./website). It includes
+Getting Started, Schema, Validation, Persistence, Accessibility, Examples, and
+Contributing pages. GitHub Pages deployment is configured but this README does
+not claim a live documentation URL until the owner enables and verifies it.
+
+Build the documentation artifact, serve it over HTTP, then open its home page:
 
 - [Single-page example](https://github.com/gustavoaroberto/demetria/tree/main/examples/single-page)
 - [Multi-page example](https://github.com/gustavoaroberto/demetria/tree/main/examples/multi-page)
@@ -198,9 +215,13 @@ Build the library, serve the repository root over HTTP, then open:
 For example:
 
 ```sh
-npm run build
-python3 -m http.server 8000
+npm run docs:build
+python3 -m http.server 8000 --directory site-dist
 ```
+
+Then visit `http://localhost:8000/`. The site links to both runnable examples.
+The presentation toggle demonstrates that styling belongs to the host: the
+generated semantic markup and behavior remain the same.
 
 The demos use fictional, non-sensitive information. A direct `file://` URL is
 not a supported ESM serving setup.
@@ -213,6 +234,7 @@ npm run lint
 npm run typecheck
 npm test
 npm run build
+npm run docs:check
 npm pack --dry-run
 npm run release:check
 ```
@@ -230,5 +252,4 @@ and
 
 ## License
 
-The repository is prepared for MIT licensing. The owner must explicitly confirm
-that choice before this version is published.
+MIT. See [LICENSE](./LICENSE).

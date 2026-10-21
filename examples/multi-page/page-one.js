@@ -1,4 +1,5 @@
 import { createForm } from '../../dist/index.js';
+import { enhanceExample } from '../shared/example.js';
 import { persistence, schema } from './schema.js';
 
 const form = createForm({
@@ -7,10 +8,10 @@ const form = createForm({
   stepId: 'applicant',
   persistence,
   onStepChange(state) {
-    if (state.currentStepId === 'course') {
+    if (state.currentStepId === 'course')
       window.location.assign('./page-two.html');
-    }
   }
 });
 
 form.mount();
+enhanceExample({ schema });

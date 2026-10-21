@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Demetria schema and field reference." />
+    <title>Schema reference — Demetria</title>
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Demetria home"
+          ><span class="brand-mark" aria-hidden="true">{D}</span>Demetria</a
+        >
+        <nav class="desktop-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../getting-started/">Start</a></li>
+            <li><a aria-current="page" href="./">Schema</a></li>
+            <li><a href="../validation/">Validation</a></li>
+            <li><a href="../persistence/">Persistence</a></li>
+            <li><a href="../accessibility/">Accessibility</a></li>
+            <li><a href="../examples/">Examples</a></li>
+            <li><a href="../contributing/">Contributing</a></li>
+          </ul>
+        </nav>
+        <details class="mobile-menu">
+          <summary>Menu</summary>
+          <nav class="mobile-nav" aria-label="Mobile">
+            <ul>
+              <li><a href="../">Home</a></li>
+              <li><a href="../getting-started/">Getting started</a></li>
+              <li><a aria-current="page" href="./">Schema</a></li>
+              <li><a href="../validation/">Validation</a></li>
+              <li><a href="../persistence/">Persistence</a></li>
+              <li><a href="../accessibility/">Accessibility</a></li>
+              <li><a href="../examples/">Examples</a></li>
+              <li><a href="../contributing/">Contributing</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main" class="page-shell">
+      <nav class="side-nav" aria-label="On this page">
+        <p>On this page</p>
+        <ul>
+          <li><a href="#form">Form</a></li>
+          <li><a href="#steps">Steps</a></li>
+          <li><a href="#fields">Fields</a></li>
+          <li><a href="#values">Values</a></li>
+        </ul>
+      </nav>
+      <article class="prose">
+        <p class="eyebrow">Reference</p>
+        <h1 class="page-title">Schema</h1>
+        <p class="lede">
+          A schema is plain data: one form identifier, one or more ordered
+          steps, and one or more fields per step.
+        </p>
+        <h2 id="form">Form schema</h2>
+        <pre><code>type FormSchema = {
+  id: string;
+  steps: FormStep[];
+};</code></pre>
+        <p>
+          Identifiers must be non-empty and unique where applicable. Invalid
+          schemas throw <code>SchemaValidationError</code> when the form is
+          created.
+        </p>
+        <h2 id="steps">Steps</h2>
+        <pre><code>type FormStep = {
+  id: string;
+  title: string;
+  description?: string;
+  fields: FormField[];
+};</code></pre>
+        <p>
+          Step order controls forward and backward navigation. Demetria v0.1.0
+          does not support conditional or dynamically inserted steps.
+        </p>
+        <h2 id="fields">Fields</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Value</th>
+                <th>Default</th>
+                <th>Additional data</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>text</code></td>
+                <td>string</td>
+                <td><code>""</code></td>
+                <td>None</td>
+              </tr>
+              <tr>
+                <td><code>email</code></td>
+                <td>string</td>
+                <td><code>""</code></td>
+                <td>Email format validation</td>
+              </tr>
+              <tr>
+                <td><code>number</code></td>
+                <td>number or empty string</td>
+                <td><code>""</code></td>
+                <td>Must be finite when provided</td>
+              </tr>
+              <tr>
+                <td><code>textarea</code></td>
+                <td>string</td>
+                <td><code>""</code></td>
+                <td>None</td>
+              </tr>
+              <tr>
+                <td><code>select</code></td>
+                <td>string</td>
+                <td><code>""</code></td>
+                <td>Requires non-empty <code>options</code></td>
+              </tr>
+              <tr>
+                <td><code>checkbox</code></td>
+                <td>boolean</td>
+                <td><code>false</code></td>
+                <td>Required means checked</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Every field has <code>name</code>, <code>type</code>, and
+          <code>label</code>. It may also have <code>description</code> and
+          <code>required</code>. Only <code>required: true</code> makes it
+          mandatory.
+        </p>
+        <pre><code>{
+  name: 'plan',
+  type: 'select',
+  label: 'Plan',
+  required: true,
+  options: [
+    { value: 'starter', label: 'Starter' },
+    { value: 'team', label: 'Team' }
+  ]
+}</code></pre>
+        <h2 id="values">Values and types</h2>
+        <p>
+          <code>getValues()</code> returns a detached, read-only
+          <code>FormValues</code> snapshot. Its values are strings, numbers, or
+          booleans. Field names remain runtime schema data.
+        </p>
+        <pre><code>const values = form.getValues();
+console.log(values.fullName);</code></pre>
+        <div class="callout callout--warning">
+          <p>
+            <strong>Current boundary:</strong> v0.1.0 does not derive a
+            field-specific value type from a schema literal and does not provide
+            custom validators.
+          </p>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>Demetria v0.1.0 · MIT License</span
+        ><a href="../validation/">Next: validation</a>
+      </div>
+    </footer>
+  </body>
+</html>

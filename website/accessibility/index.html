@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demetria accessibility behavior, responsibilities, and known limits."
+    />
+    <title>Accessibility — Demetria</title>
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Demetria home"
+          ><span class="brand-mark" aria-hidden="true">{D}</span>Demetria</a
+        >
+        <nav class="desktop-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../getting-started/">Start</a></li>
+            <li><a href="../schema/">Schema</a></li>
+            <li><a href="../validation/">Validation</a></li>
+            <li><a href="../persistence/">Persistence</a></li>
+            <li><a aria-current="page" href="./">Accessibility</a></li>
+            <li><a href="../examples/">Examples</a></li>
+            <li><a href="../contributing/">Contributing</a></li>
+          </ul>
+        </nav>
+        <details class="mobile-menu">
+          <summary>Menu</summary>
+          <nav class="mobile-nav" aria-label="Mobile">
+            <ul>
+              <li><a href="../">Home</a></li>
+              <li><a href="../getting-started/">Getting started</a></li>
+              <li><a href="../schema/">Schema</a></li>
+              <li><a href="../validation/">Validation</a></li>
+              <li><a href="../persistence/">Persistence</a></li>
+              <li><a aria-current="page" href="./">Accessibility</a></li>
+              <li><a href="../examples/">Examples</a></li>
+              <li><a href="../contributing/">Contributing</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main" class="page-shell">
+      <nav class="side-nav" aria-label="On this page">
+        <p>On this page</p>
+        <ul>
+          <li><a href="#built-in">Built in</a></li>
+          <li><a href="#host">Host duties</a></li>
+          <li><a href="#testing">Testing</a></li>
+          <li><a href="#limits">Limits</a></li>
+        </ul>
+      </nav>
+      <article class="prose">
+        <p class="eyebrow">Design target</p>
+        <h1 class="page-title">Accessibility</h1>
+        <p class="lede">
+          Demetria targets accessible foundations and WCAG 2.2 AA-informed
+          behavior. This is not a claim that every integration—or the project
+          itself—has been formally audited for conformance.
+        </p>
+        <h2 id="built-in">What the renderer provides</h2>
+        <ul>
+          <li>
+            A native <code>form</code>, grouped step content, labels, and native
+            controls.
+          </li>
+          <li>
+            Descriptions and errors associated through
+            <code>aria-describedby</code>.
+          </li>
+          <li>
+            An announced error summary and focus on the first invalid control.
+          </li>
+          <li>Focus on the new step heading after successful navigation.</li>
+          <li>Native buttons and keyboard submission behavior.</li>
+          <li>Textual required-field indication rather than color alone.</li>
+        </ul>
+        <h2 id="host">What the host application owns</h2>
+        <ul>
+          <li>Visible focus styles with sufficient contrast.</li>
+          <li>
+            Page title, landmarks, heading hierarchy, and skip navigation.
+          </li>
+          <li>
+            Readable colors, zoom and reflow behavior, and motion preferences.
+          </li>
+          <li>
+            Meaningful field labels, descriptions, option text, and error
+            context.
+          </li>
+          <li>
+            Focus behavior around full-document navigation and any surrounding
+            dialog.
+          </li>
+        </ul>
+        <div class="callout">
+          <p>
+            Use native elements whenever possible. Styling hooks beginning with
+            <code>demetria__</code> do not replace semantics and may be themed
+            without changing the generated structure.
+          </p>
+        </div>
+        <h2 id="testing">Recommended testing</h2>
+        <ol>
+          <li>Complete every path using only the keyboard.</li>
+          <li>
+            Trigger errors and verify announcement, association, and focus
+            order.
+          </li>
+          <li>Test at 200% and 400% zoom and at a narrow viewport.</li>
+          <li>Test with at least one screen reader and browser combination.</li>
+          <li>
+            Add automated checks with Playwright and axe-core as a
+            supplement—not a substitute—for manual review.
+          </li>
+        </ol>
+        <h2 id="limits">Known limitations</h2>
+        <p>
+          Messages are English-only and not configurable in v0.1.0. Automated
+          tests cover keyboard navigation and error focus in jsdom, but no
+          formal assistive-technology or WCAG conformance audit has been
+          completed.
+        </p>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>Demetria v0.1.0 · MIT License</span
+        ><a href="https://github.com/gustavoaroberto/demetria/issues"
+          >Report an accessibility issue</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

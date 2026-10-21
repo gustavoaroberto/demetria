@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Working Demetria single-page and multi-page examples."
+    />
+    <title>Examples — Demetria</title>
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Demetria home"
+          ><span class="brand-mark" aria-hidden="true">{D}</span>Demetria</a
+        >
+        <nav class="desktop-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../getting-started/">Start</a></li>
+            <li><a href="../schema/">Schema</a></li>
+            <li><a href="../validation/">Validation</a></li>
+            <li><a href="../persistence/">Persistence</a></li>
+            <li><a href="../accessibility/">Accessibility</a></li>
+            <li><a aria-current="page" href="./">Examples</a></li>
+            <li><a href="../contributing/">Contributing</a></li>
+          </ul>
+        </nav>
+        <details class="mobile-menu">
+          <summary>Menu</summary>
+          <nav class="mobile-nav" aria-label="Mobile">
+            <ul>
+              <li><a href="../">Home</a></li>
+              <li><a href="../getting-started/">Getting started</a></li>
+              <li><a href="../schema/">Schema</a></li>
+              <li><a href="../validation/">Validation</a></li>
+              <li><a href="../persistence/">Persistence</a></li>
+              <li><a href="../accessibility/">Accessibility</a></li>
+              <li><a aria-current="page" href="./">Examples</a></li>
+              <li><a href="../contributing/">Contributing</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main" class="page-shell">
+      <nav class="side-nav" aria-label="On this page">
+        <p>Examples</p>
+        <ul>
+          <li><a href="#single">Single page</a></li>
+          <li><a href="#multiple">Multiple pages</a></li>
+          <li><a href="#notes">Integration notes</a></li>
+        </ul>
+      </nav>
+      <article class="prose">
+        <p class="eyebrow">Runnable patterns</p>
+        <h1 class="page-title">Examples</h1>
+        <p class="lede">
+          Both examples run in plain browser modules against the generated
+          library artifact and use a shared presentation layer outside the core
+          package.
+        </p>
+        <div class="reference-grid">
+          <article id="single" class="panel">
+            <h2>Single-page onboarding</h2>
+            <p>
+              Two steps, all supported controls, forward and backward
+              navigation, and final values displayed in the page.
+            </p>
+            <div class="card-actions">
+              <a class="button-link" href="../examples/single-page/"
+                >Launch single-page example</a
+              >
+            </div>
+          </article>
+          <article id="multiple" class="panel">
+            <h2>Multi-page application</h2>
+            <p>
+              Next and Previous perform real document navigation. State is
+              restored from <code>sessionStorage</code>.
+            </p>
+            <div class="card-actions">
+              <a class="button-link" href="../examples/multi-page/page-one.html"
+                >Launch multi-page example</a
+              >
+            </div>
+          </article>
+        </div>
+        <h2 id="notes">Integration notes</h2>
+        <ul>
+          <li>
+            The package ships no CSS. Example styling uses public class hooks
+            and lives in <code>examples/shared</code>.
+          </li>
+          <li>
+            The presentation toggle shows the same generated markup with
+            enhanced or near-native control styling.
+          </li>
+          <li>
+            Optional fields are labeled explicitly. A non-empty optional value
+            is still type-validated.
+          </li>
+          <li>
+            The multi-page example stores only fictional demonstration data. Do
+            not use Web Storage for secrets or sensitive personal data.
+          </li>
+        </ul>
+        <div class="callout">
+          <p>
+            For local development, run <code>npm run docs:build</code> and serve
+            <code>site-dist</code> over HTTP. Browser modules do not work
+            reliably when opened directly with <code>file:</code>.
+          </p>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>Demetria v0.1.0 · MIT License</span
+        ><a href="../getting-started/">Integration guide</a>
+      </div>
+    </footer>
+  </body>
+</html>

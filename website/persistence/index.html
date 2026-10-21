@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Persist and restore Demetria form state safely."
+    />
+    <title>Persistence — Demetria</title>
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Demetria home"
+          ><span class="brand-mark" aria-hidden="true">{D}</span>Demetria</a
+        >
+        <nav class="desktop-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../getting-started/">Start</a></li>
+            <li><a href="../schema/">Schema</a></li>
+            <li><a href="../validation/">Validation</a></li>
+            <li><a aria-current="page" href="./">Persistence</a></li>
+            <li><a href="../accessibility/">Accessibility</a></li>
+            <li><a href="../examples/">Examples</a></li>
+            <li><a href="../contributing/">Contributing</a></li>
+          </ul>
+        </nav>
+        <details class="mobile-menu">
+          <summary>Menu</summary>
+          <nav class="mobile-nav" aria-label="Mobile">
+            <ul>
+              <li><a href="../">Home</a></li>
+              <li><a href="../getting-started/">Getting started</a></li>
+              <li><a href="../schema/">Schema</a></li>
+              <li><a href="../validation/">Validation</a></li>
+              <li><a aria-current="page" href="./">Persistence</a></li>
+              <li><a href="../accessibility/">Accessibility</a></li>
+              <li><a href="../examples/">Examples</a></li>
+              <li><a href="../contributing/">Contributing</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main" class="page-shell">
+      <nav class="side-nav" aria-label="On this page">
+        <p>On this page</p>
+        <ul>
+          <li><a href="#adapter">Storage option</a></li>
+          <li><a href="#multi-page">Multi-page</a></li>
+          <li><a href="#security">Security</a></li>
+        </ul>
+      </nav>
+      <article class="prose">
+        <p class="eyebrow">State</p>
+        <h1 class="page-title">Persistence</h1>
+        <p class="lede">
+          State stays in memory by default. To persist it, explicitly choose
+          session storage or local storage; Demetria versions and validates its
+          saved snapshot.
+        </p>
+        <h2 id="adapter">Storage option</h2>
+        <pre><code>createForm({
+  target,
+  schema,
+  persistence: {
+    type: 'sessionStorage',
+    key: 'demetria:signup'
+  }
+});</code></pre>
+        <p>
+          Supported types are <code>sessionStorage</code> and
+          <code>localStorage</code>. The versioned snapshot contains schema
+          identity, the current step, and form values. Invalid, incompatible, or
+          unavailable stored state is ignored and reported through
+          <code>getState().persistenceStatus</code>.
+        </p>
+        <p>
+          Demetria saves after value changes and successful step transitions,
+          including completion. It does not expire or clear stored state
+          automatically; an application can remove its known storage key when
+          the flow is complete.
+        </p>
+        <h2 id="multi-page">Real page-to-page flow</h2>
+        <p>
+          Use the same schema and persistence configuration on each document.
+          Set its initial step for the current document and navigate from
+          <code>onStepChange</code>. The
+          <a href="../examples/multi-page/page-one.html">multi-page example</a>
+          demonstrates this using <code>window.location.assign</code>, so Next
+          changes documents rather than swapping a form in place.
+        </p>
+        <h2 id="security">Security and privacy</h2>
+        <div class="callout callout--warning">
+          <p>
+            <strong
+              >Web Storage is readable by scripts on the same origin.</strong
+            >
+            Do not store passwords, payment information, government identifiers,
+            health data, or other sensitive values there.
+          </p>
+        </div>
+        <ul>
+          <li>Treat restored data as untrusted input.</li>
+          <li>Use a namespaced key and remove it when the flow is complete.</li>
+          <li>
+            Prefer <code>sessionStorage</code> for short-lived examples; choose
+            storage based on your threat model.
+          </li>
+          <li>Always validate and authorize submitted values on the server.</li>
+        </ul>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>Demetria v0.1.0 · MIT License</span
+        ><a href="../examples/multi-page/page-one.html"
+          >Open multi-page example</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

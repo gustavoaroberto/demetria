@@ -3,13 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Demetria multi-page example — applicant</title>
+    <meta
+      name="description"
+      content="Page one of a real multi-page Demetria flow."
+    />
+    <title>Course application, applicant — Demetria</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <main>
-      <h1>Course application</h1>
-      <p>Page one of two. Next validates this step and loads page two.</p>
-      <div id="demetria-form"></div>
+    <a class="skip-link" href="#main">Skip to form</a>
+    <header class="example-header">
+      <div class="example-header__inner">
+        <a class="brand" href="../../"><span>{D}</span> Demetria example</a
+        ><button
+          id="presentation-toggle"
+          class="presentation-toggle"
+          type="button"
+          aria-pressed="false"
+        >
+          Use native controls
+        </button>
+      </div>
+    </header>
+    <main id="main" class="example-shell">
+      <section class="example-intro" aria-labelledby="page-title">
+        <p class="eyebrow">Multi-page flow · page 1 of 2</p>
+        <h1 id="page-title">Course application</h1>
+        <p class="lede">
+          Next validates this step, saves its values, and loads a separate HTML
+          document for the course choice.
+        </p>
+        <span class="progress-label">Applicant details</span>
+        <p class="privacy-note">
+          This example uses <code>sessionStorage</code>. Enter fictional data
+          only; do not store sensitive information in Web Storage.
+        </p>
+      </section>
+      <section aria-label="Applicant details form">
+        <div class="form-card"><div id="demetria-form"></div></div>
+      </section>
     </main>
     <script type="module" src="./page-one.js"></script>
   </body>

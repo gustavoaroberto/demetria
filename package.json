@@ -19,14 +19,16 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
-    "lint": "eslint src test eslint.config.js vitest.config.ts",
+    "lint": "eslint src test scripts examples website/assets eslint.config.js vitest.config.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
     "verify:consumer": "npm run build && tsc -p tsconfig.consumer.json",
     "package:check": "npm pack --dry-run --ignore-scripts",
+    "docs:build": "npm run build && node scripts/build-docs.mjs",
+    "docs:check": "npm run docs:build && node scripts/check-docs.mjs",
     "check": "npm run lint && npm run typecheck && npm test && npm run build",
-    "release:check": "npm run format:check && npm run check && tsc -p tsconfig.consumer.json && npm run package:check",
+    "release:check": "npm run format:check && npm run check && npm run docs:check && tsc -p tsconfig.consumer.json && npm run package:check",
     "prepack": "npm run check"
   },
   "repository": {

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Install Demetria and create a typed multi-step form."
+    />
+    <title>Getting started — Demetria</title>
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Demetria home"
+          ><span class="brand-mark" aria-hidden="true">{D}</span>Demetria</a
+        >
+        <nav class="desktop-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a aria-current="page" href="./">Start</a></li>
+            <li><a href="../schema/">Schema</a></li>
+            <li><a href="../validation/">Validation</a></li>
+            <li><a href="../persistence/">Persistence</a></li>
+            <li><a href="../accessibility/">Accessibility</a></li>
+            <li><a href="../examples/">Examples</a></li>
+            <li><a href="../contributing/">Contributing</a></li>
+          </ul>
+        </nav>
+        <details class="mobile-menu">
+          <summary>Menu</summary>
+          <nav class="mobile-nav" aria-label="Mobile">
+            <ul>
+              <li><a href="../">Home</a></li>
+              <li><a aria-current="page" href="./">Getting started</a></li>
+              <li><a href="../schema/">Schema</a></li>
+              <li><a href="../validation/">Validation</a></li>
+              <li><a href="../persistence/">Persistence</a></li>
+              <li><a href="../accessibility/">Accessibility</a></li>
+              <li><a href="../examples/">Examples</a></li>
+              <li><a href="../contributing/">Contributing</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main" class="page-shell">
+      <nav class="side-nav" aria-label="On this page">
+        <p>On this page</p>
+        <ul>
+          <li><a href="#install">Install</a></li>
+          <li><a href="#create">Create a form</a></li>
+          <li><a href="#lifecycle">Lifecycle</a></li>
+          <li><a href="#next">Next steps</a></li>
+        </ul>
+      </nav>
+      <article class="prose">
+        <p class="eyebrow">Getting started</p>
+        <h1 class="page-title">A working form in a few explicit steps</h1>
+        <p class="lede">
+          Demetria renders into a target you own. It does not ship styles,
+          manage a server, or require a component framework.
+        </p>
+        <h2 id="install">Install</h2>
+        <pre><code>npm install demetria</code></pre>
+        <p>
+          The package is ESM-only and includes TypeScript declarations.
+          Production code has zero runtime dependencies.
+        </p>
+        <h2 id="create">Create a form</h2>
+        <p>Add a mount point to the page:</p>
+        <pre><code>&lt;div id="signup-form"&gt;&lt;/div&gt;
+&lt;script type="module" src="./app.js"&gt;&lt;/script&gt;</code></pre>
+        <p>Then define a schema and mount it:</p>
+        <pre><code>import { createForm } from 'demetria';
+
+const form = createForm({
+  target: '#signup-form',
+  schema: {
+    id: 'signup',
+    steps: [
+      {
+        id: 'contact',
+        title: 'Contact details',
+        fields: [
+          {
+            name: 'fullName',
+            type: 'text',
+            label: 'Full name',
+            required: true
+          },
+          {
+            name: 'email',
+            type: 'email',
+            label: 'Email',
+            description: 'Optional, but validated when provided.'
+          }
+        ]
+      }
+    ]
+  },
+  onComplete(values) {
+    console.log(values);
+  }
+});
+
+form.mount();</code></pre>
+        <div class="callout">
+          <p>
+            <strong>Required is opt-in.</strong> A field is required only when
+            <code>required: true</code>. Omitting it has the same behavior as
+            <code>required: false</code>.
+          </p>
+        </div>
+        <h2 id="lifecycle">Use the lifecycle</h2>
+        <p>
+          <code>createForm</code> returns an instance with <code>mount()</code>,
+          <code>destroy()</code>, <code>getState()</code>,
+          <code>getValues()</code>, <code>setValue()</code>,
+          <code>next()</code>, and <code>previous()</code>. User navigation is
+          already wired to rendered buttons.
+        </p>
+        <pre><code>const values = form.getValues();
+const state = form.getState();
+
+// Completion is normally handled by the onComplete callback.
+console.log(values, state.currentStepId);</code></pre>
+        <p>
+          For a multi-page flow, use <code>onStepChange</code> to navigate to
+          another document and restore values there. The
+          <a href="../persistence/">persistence guide</a> covers the storage
+          boundary and security implications.
+        </p>
+        <h2 id="next">Next steps</h2>
+        <ul>
+          <li>Read the <a href="../schema/">schema reference</a>.</li>
+          <li>
+            Understand exact <a href="../validation/">validation behavior</a>.
+          </li>
+          <li>Open the <a href="../examples/">working examples</a>.</li>
+        </ul>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>Demetria v0.1.0 · MIT License</span
+        ><a href="https://github.com/gustavoaroberto/demetria"
+          >Source on GitHub</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

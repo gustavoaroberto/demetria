@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Exact Demetria validation behavior and an interactive example."
+    />
+    <title>Validation — Demetria</title>
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Demetria home"
+          ><span class="brand-mark" aria-hidden="true">{D}</span>Demetria</a
+        >
+        <nav class="desktop-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../getting-started/">Start</a></li>
+            <li><a href="../schema/">Schema</a></li>
+            <li><a aria-current="page" href="./">Validation</a></li>
+            <li><a href="../persistence/">Persistence</a></li>
+            <li><a href="../accessibility/">Accessibility</a></li>
+            <li><a href="../examples/">Examples</a></li>
+            <li><a href="../contributing/">Contributing</a></li>
+          </ul>
+        </nav>
+        <details class="mobile-menu">
+          <summary>Menu</summary>
+          <nav class="mobile-nav" aria-label="Mobile">
+            <ul>
+              <li><a href="../">Home</a></li>
+              <li><a href="../getting-started/">Getting started</a></li>
+              <li><a href="../schema/">Schema</a></li>
+              <li><a aria-current="page" href="./">Validation</a></li>
+              <li><a href="../persistence/">Persistence</a></li>
+              <li><a href="../accessibility/">Accessibility</a></li>
+              <li><a href="../examples/">Examples</a></li>
+              <li><a href="../contributing/">Contributing</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main" class="page-shell">
+      <nav class="side-nav" aria-label="On this page">
+        <p>On this page</p>
+        <ul>
+          <li><a href="#required">Required</a></li>
+          <li><a href="#types">By field type</a></li>
+          <li><a href="#demo">Try it</a></li>
+          <li><a href="#limits">Limits</a></li>
+        </ul>
+      </nav>
+      <article class="prose">
+        <p class="eyebrow">Behavior</p>
+        <h1 class="page-title">Validation</h1>
+        <p class="lede">
+          A step must be valid before forward navigation or completion. Backward
+          navigation never validates the current step.
+        </p>
+        <h2 id="required">Required and optional fields</h2>
+        <p>
+          A field is required only when <code>required === true</code>. An
+          absent flag and <code>required: false</code> are equivalent. Optional
+          empty values pass validation; optional non-empty values still follow
+          their type rules.
+        </p>
+        <pre><code>{ name: 'name', type: 'text', label: 'Name', required: true }
+{ name: 'email', type: 'email', label: 'Email' } // optional</code></pre>
+        <div class="callout callout--warning">
+          <p>
+            <strong>Whitespace detail:</strong> v0.1.0 considers only
+            <code>''</code>, <code>null</code>, and
+            <code>undefined</code> empty. A whitespace-only text value therefore
+            passes required validation.
+          </p>
+        </div>
+        <h2 id="types">Rules by field type</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Empty</th>
+                <th>Non-empty rule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>text / textarea</td>
+                <td>Passes unless required</td>
+                <td>Must be a string</td>
+              </tr>
+              <tr>
+                <td>email</td>
+                <td>Passes unless required</td>
+                <td>Must match the built-in basic email pattern</td>
+              </tr>
+              <tr>
+                <td>number</td>
+                <td>Passes unless required</td>
+                <td>
+                  Must be a finite JavaScript number; numeric strings fail
+                </td>
+              </tr>
+              <tr>
+                <td>select</td>
+                <td>Passes unless required</td>
+                <td>Must equal one declared option value</td>
+              </tr>
+              <tr>
+                <td>checkbox</td>
+                <td><code>false</code> passes only when optional</td>
+                <td>
+                  Must be boolean; required means it must be <code>true</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 id="demo">Try validation</h2>
+        <p>
+          Submit empty, then enter an invalid optional email. This form runs the
+          compiled Demetria package code.
+        </p>
+        <div class="demo-panel">
+          <div class="demo-panel__intro">
+            <strong>Interactive contact form</strong>
+          </div>
+          <div id="validation-demo"></div>
+          <pre id="validation-result" aria-live="polite">
+Complete the form to inspect its values.</pre>
+        </div>
+        <h2 id="limits">Current limits</h2>
+        <p>
+          Validation messages are built in and English-only. v0.1.0 has no
+          custom validators, asynchronous validation, cross-field rules, or
+          server-error API. Validate again on the server for every submission;
+          browser validation is a usability feature, not a security boundary.
+        </p>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>Demetria v0.1.0 · MIT License</span
+        ><a href="../accessibility/">Accessibility details</a>
+      </div>
+    </footer>
+    <script type="module" src="../assets/validation-demo.js"></script>
+  </body>
+</html>

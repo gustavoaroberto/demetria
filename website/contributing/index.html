@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="How to contribute to Demetria." />
+    <title>Contributing — Demetria</title>
+    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../" aria-label="Demetria home"
+          ><span class="brand-mark" aria-hidden="true">{D}</span>Demetria</a
+        >
+        <nav class="desktop-nav" aria-label="Primary">
+          <ul>
+            <li><a href="../">Home</a></li>
+            <li><a href="../getting-started/">Start</a></li>
+            <li><a href="../schema/">Schema</a></li>
+            <li><a href="../validation/">Validation</a></li>
+            <li><a href="../persistence/">Persistence</a></li>
+            <li><a href="../accessibility/">Accessibility</a></li>
+            <li><a href="../examples/">Examples</a></li>
+            <li><a aria-current="page" href="./">Contributing</a></li>
+          </ul>
+        </nav>
+        <details class="mobile-menu">
+          <summary>Menu</summary>
+          <nav class="mobile-nav" aria-label="Mobile">
+            <ul>
+              <li><a href="../">Home</a></li>
+              <li><a href="../getting-started/">Getting started</a></li>
+              <li><a href="../schema/">Schema</a></li>
+              <li><a href="../validation/">Validation</a></li>
+              <li><a href="../persistence/">Persistence</a></li>
+              <li><a href="../accessibility/">Accessibility</a></li>
+              <li><a href="../examples/">Examples</a></li>
+              <li><a aria-current="page" href="./">Contributing</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main" class="page-shell">
+      <nav class="side-nav" aria-label="On this page">
+        <p>On this page</p>
+        <ul>
+          <li><a href="#setup">Setup</a></li>
+          <li><a href="#quality">Quality gates</a></li>
+          <li><a href="#principles">Principles</a></li>
+        </ul>
+      </nav>
+      <article class="prose">
+        <p class="eyebrow">Project</p>
+        <h1 class="page-title">Contributing</h1>
+        <p class="lede">
+          Contributions should keep Demetria small, predictable, accessible, and
+          independent of application frameworks.
+        </p>
+        <h2 id="setup">Local setup</h2>
+        <pre><code>git clone https://github.com/gustavoaroberto/demetria.git
+cd demetria
+npm ci
+npm run check</code></pre>
+        <p>
+          Development and CI target Node.js 24 and npm. Read the repository
+          <a
+            href="https://github.com/gustavoaroberto/demetria/blob/main/CONTRIBUTING.md"
+            >contribution guide</a
+          >
+          and
+          <a
+            href="https://github.com/gustavoaroberto/demetria/blob/main/AGENTS.md"
+            >agent instructions</a
+          >
+          before changing behavior.
+        </p>
+        <h2 id="quality">Quality gates</h2>
+        <pre><code>npm run lint
+npm run typecheck
+npm test
+npm run build
+npm run docs:check</code></pre>
+        <p>
+          Use Conventional Commits. Add focused tests for behavior changes and
+          keep README, website, and examples synchronized with the actual
+          exported API.
+        </p>
+        <h2 id="principles">Design principles</h2>
+        <ul>
+          <li>
+            Zero runtime dependencies unless there is a compelling, documented
+            reason.
+          </li>
+          <li>
+            Semantic browser APIs and accessible behavior from the first
+            implementation.
+          </li>
+          <li>A narrow headless form-flow engine—not a full form framework.</li>
+          <li>Strict TypeScript and explicit public boundaries.</li>
+          <li>
+            No claims of standards conformance without appropriate verification.
+          </li>
+        </ul>
+        <p>
+          Before opening a pull request, review the complete
+          <a
+            href="https://github.com/gustavoaroberto/demetria/blob/main/CONTRIBUTING.md"
+            >CONTRIBUTING.md</a
+          >.
+        </p>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <span>Demetria v0.1.0 · MIT License</span
+        ><a href="https://github.com/gustavoaroberto/demetria/issues">Issues</a>
+      </div>
+    </footer>
+  </body>
+</html>

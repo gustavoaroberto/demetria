@@ -3,15 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Demetria single-page example</title>
+    <meta
+      name="description"
+      content="A working two-step Demetria onboarding form."
+    />
+    <title>Single-page onboarding — Demetria</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <main>
-      <h1>Workshop registration</h1>
-      <div id="demetria-form"></div>
-      <h2>Completed values</h2>
-      <pre id="result" aria-live="polite">
+    <a class="skip-link" href="#main">Skip to form</a>
+    <header class="example-header">
+      <div class="example-header__inner">
+        <a class="brand" href="../../"><span>{D}</span> Demetria example</a
+        ><button
+          id="presentation-toggle"
+          class="presentation-toggle"
+          type="button"
+          aria-pressed="false"
+        >
+          Use native controls
+        </button>
+      </div>
+    </header>
+    <main id="main" class="example-shell">
+      <section class="example-intro" aria-labelledby="page-title">
+        <p class="eyebrow">Single-page flow</p>
+        <h1 id="page-title">Create your learning profile</h1>
+        <p class="lede">
+          A compact onboarding flow showing every field type, optional
+          validation, and in-page step navigation.
+        </p>
+        <span class="progress-label">2 steps · fictional data only</span>
+        <p class="privacy-note">
+          Required and optional fields are identified in text. Do not enter real
+          sensitive information in this demonstration.
+        </p>
+      </section>
+      <section aria-label="Onboarding form">
+        <div class="form-card"><div id="demetria-form"></div></div>
+        <div class="result-card">
+          <h2>Completed values</h2>
+          <pre id="result" aria-live="polite">
 Complete the form to see its values.</pre>
+        </div>
+      </section>
     </main>
     <script type="module" src="./app.js"></script>
   </body>
