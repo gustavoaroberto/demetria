@@ -18,17 +18,18 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
-    "lint": "eslint src test scripts examples website/assets eslint.config.js vitest.config.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit && tsc -p tsconfig.e2e.json --noEmit",
+    "lint": "eslint src test e2e scripts examples website/assets eslint.config.js vitest.config.ts playwright.config.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
+    "test:a11y": "playwright test",
     "verify:consumer": "npm run build && tsc -p tsconfig.consumer.json",
     "package:check": "npm pack --dry-run --ignore-scripts",
     "docs:build": "npm run build && node scripts/build-docs.mjs",
     "docs:check": "npm run docs:build && node scripts/check-docs.mjs",
     "check": "npm run lint && npm run typecheck && npm test && npm run build",
-    "release:check": "npm run format:check && npm run check && npm run docs:check && tsc -p tsconfig.consumer.json && npm run package:check",
+    "release:check": "npm run format:check && npm run check && npm run docs:check && npm run test:a11y && tsc -p tsconfig.consumer.json && npm run package:check",
     "prepack": "npm run check"
   },
   "repository": {
@@ -54,7 +55,9 @@
     "node": ">=20"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
     "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
     "eslint": "10.13.0",
     "eslint-config-prettier": "10.1.8",
     "jsdom": "29.1.1",

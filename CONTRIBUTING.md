@@ -5,8 +5,9 @@ renderer, and opt-in persistence layer. Please keep changes inside that scope.
 
 Use Node.js 24 and npm. Install with `npm ci`, make focused changes, add tests,
 and run `npm run check`. Documentation changes also require
-`npm run docs:check`. For packaging changes, run `npm pack --dry-run` and test
-the packed artifact from a temporary consumer project.
+`npm run docs:check` and `npm run test:a11y` with stable Chrome installed. For
+packaging changes, run `npm pack --dry-run` and test the packed artifact from a
+temporary consumer project.
 
 Accessibility and security behavior are product requirements. Prefer semantic
 browser APIs, never insert schema strings as HTML, and never persist values

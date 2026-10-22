@@ -140,4 +140,24 @@ describe('native DOM renderer', () => {
       expect.objectContaining({ fullName: 'Mary Jackson', newsletter: true })
     );
   });
+
+  it('preserves focus on the submit button after completion', () => {
+    const onComplete = vi.fn();
+    const form = createForm({ schema, target: '#form', onComplete });
+    form.mount();
+    form.setValue('fullName', 'Annie Easley');
+    form.setValue('email', 'annie@example.test');
+    form.next();
+    form.setValue('newsletter', true);
+    form.setValue('contactMethod', 'email');
+
+    const complete = document.querySelector<HTMLButtonElement>(
+      'button[data-demetria-action="complete"]'
+    );
+    complete?.focus();
+    document.querySelector<HTMLFormElement>('form')?.requestSubmit(complete);
+
+    expect(onComplete).toHaveBeenCalledOnce();
+    expect(document.activeElement).toBe(complete);
+  });
 });

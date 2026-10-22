@@ -5,6 +5,19 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Browser accessibility regression coverage with Playwright and axe-core.
+
+### Fixed
+
+- Preserve submit-button focus after successful form completion.
+- Remove redundant live-region configuration from the validation alert.
+- Correct documentation accessible names, narrow-screen reflow, control
+  boundaries, and native-presentation contrast.
+
 ## [0.1.0] - 2026-10-21
 
 ### Added

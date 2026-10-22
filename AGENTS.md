@@ -39,6 +39,7 @@ forms. Preserve that narrow purpose; it is not a comprehensive form framework.
 ## Required checks
 
 Run `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`,
-`npm run docs:check`, and `npm pack --dry-run`. Verify a clean external ESM
-import for package changes.
+`npm run docs:check`, `npm run test:a11y`, and `npm pack --dry-run`. The browser
+suite uses an installed stable Chrome. Verify a clean external ESM import for
+package changes.
 Before a release, run `npm run release:check` and follow `docs/RELEASING.md`.

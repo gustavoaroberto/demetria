@@ -44,7 +44,7 @@ export function createForm(options: CreateFormOptions): DemetriaForm {
   });
 
   const notifyTransition = (result: NavigationResult): void => {
-    renderer.render();
+    if (result !== 'completed') renderer.render();
     if (result === 'completed') options.onComplete?.(engine.getValues());
     if (result === 'advanced' || result === 'moved-back') {
       renderer.focusStepHeading();

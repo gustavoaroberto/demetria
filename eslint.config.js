@@ -8,7 +8,13 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   prettier,
   {
-    files: ['src/**/*.ts', 'test/**/*.ts', 'vitest.config.ts'],
+    files: [
+      'src/**/*.ts',
+      'test/**/*.ts',
+      'e2e/**/*.ts',
+      'vitest.config.ts',
+      'playwright.config.ts'
+    ],
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error'

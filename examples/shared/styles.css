@@ -2,7 +2,7 @@
   color-scheme: dark;
   --ink: #11121b;
   --surface: #1e2030;
-  --line: #50526f;
+  --line: #727498;
   --text: #f4f0ff;
   --muted: #c3bed2;
   --accent: #b8a4ff;
@@ -164,6 +164,7 @@ h1 {
 }
 body:not(.example--native) .demetria__steps ol {
   display: flex;
+  flex-wrap: wrap;
   margin: 0 0 1.6rem;
   padding: 0;
   gap: 0.45rem;
@@ -292,9 +293,12 @@ body:not(.example--native) .demetria__button--next {
 .example--native .demetria__error-summary {
   color: #a40018;
 }
+.example--native .demetria__field-status {
+  color: CanvasText;
+}
 @media (max-width: 48rem) {
   .example-shell {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .example-header__inner {
     align-items: flex-start;
@@ -315,5 +319,11 @@ body:not(.example--native) .demetria__button--next {
   .progress-label,
   body:not(.example--native) .demetria__step-indicator[aria-current='step'] {
     border: 2px solid ButtonText;
+  }
+
+  .result-card pre {
+    color: CanvasText;
+    background: Canvas;
+    border: 1px solid CanvasText;
   }
 }

@@ -7,7 +7,10 @@ alerts, `aria-invalid`, and focus movement to the first invalid control.
 
 Consumers remain responsible for visible focus styles, sufficient color
 contrast, page titles/headings, surrounding instructions, and testing the final
-application with assistive technology. Unit tests cover keyboard submission,
-navigation, error association, and error focus in jsdom. Future work will add
-Playwright browser coverage and axe-core checks without replacing manual
-accessibility review.
+application with assistive technology. Unit and Playwright tests cover keyboard
+submission, navigation, error association, error focus, reflow, and axe-core
+rules without replacing manual accessibility review.
+
+The dated [v0.1.0 accessibility audit](./accessibility-audit.md) records the
+automated browser results, confirmed fixes, and remaining manual screen-reader
+checks. It is an engineering audit, not a conformance statement.

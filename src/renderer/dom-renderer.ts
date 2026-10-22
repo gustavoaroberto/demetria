@@ -91,7 +91,6 @@ export class DomRenderer {
         'demetria__error-summary'
       );
       summary.setAttribute('role', 'alert');
-      summary.setAttribute('aria-live', 'assertive');
     }
 
     for (const field of step.fields) {

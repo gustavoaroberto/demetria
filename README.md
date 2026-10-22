@@ -204,8 +204,10 @@ Demetria ships no CSS. Stable hooks include:
 
 The static documentation source lives in [`website/`](./website). It includes
 Getting Started, Schema, Validation, Persistence, Accessibility, Examples, and
-Contributing pages. GitHub Pages deployment is configured but this README does
-not claim a live documentation URL until the owner enables and verifies it.
+Contributing pages. The published site is available at
+[gustavoaroberto.github.io/demetria](https://gustavoaroberto.github.io/demetria/).
+The [accessibility audit](./docs/accessibility-audit.md) records verified fixes
+and remaining manual checks without making a conformance claim.
 
 Build the documentation artifact, serve it over HTTP, then open its home page:
 
@@ -235,6 +237,7 @@ npm run typecheck
 npm test
 npm run build
 npm run docs:check
+npm run test:a11y # requires an installed stable Chrome
 npm pack --dry-run
 npm run release:check
 ```

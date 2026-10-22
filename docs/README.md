@@ -10,6 +10,7 @@ Current sections:
 - [API reference](./api.md)
 - [Schema guide](./schema.md)
 - [Accessibility guide](./accessibility.md)
+- [Accessibility audit](./accessibility-audit.md)
 - [Persistence guide](./persistence.md)
 - [Maintainer release guide](./RELEASING.md)
 - [GitHub Pages setup](./GITHUB_PAGES.md)
@@ -17,8 +18,8 @@ Current sections:
 - [Executable examples](../examples)
 
 Future work should add generated API declaration pages, richer schema recipes,
-persistence migration guidance, browser compatibility results, Playwright
-interaction tests, and axe-core checks. Select a generator only when the
-documentation volume makes plain HTML and Markdown difficult to maintain.
-TypeScript 7 should be reconsidered when stable typescript-eslint declares
-compatibility.
+persistence migration guidance, broader browser and assistive-technology
+results, and more cross-browser Playwright coverage. Select a generator only
+when the documentation volume makes plain HTML and Markdown difficult to
+maintain. TypeScript 7 should be reconsidered when stable typescript-eslint
+declares compatibility.
