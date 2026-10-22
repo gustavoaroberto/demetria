@@ -1,6 +1,6 @@
 {
   "name": "demetria",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Schema-driven multi-step HTML forms for any JavaScript application.",
   "type": "module",
   "main": "./dist/index.js",
