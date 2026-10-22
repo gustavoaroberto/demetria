@@ -12,8 +12,9 @@ forms. Preserve that narrow purpose; it is not a comprehensive form framework.
 - `src/persistence` owns versioned Web Storage snapshots. Storage is opt-in.
 - `src/index.ts` is the public package boundary. Do not export internal classes
   or add public API without tests and README updates.
-- `website` is the static documentation source. `examples/shared` owns example
-  presentation only; core rendering remains unstyled. `site-dist` is generated.
+- `website` is the static documentation source and owns the Demetria brand
+  assets. `examples/shared` owns example presentation only; core rendering
+  remains unstyled. `site-dist` is generated.
 
 ## Engineering rules
 
@@ -22,7 +23,7 @@ forms. Preserve that narrow purpose; it is not a comprehensive form framework.
   to schema types.
 - A field is required only when `required === true`. Missing and `false` are
   equivalent. Empty optional fields pass; non-empty optional values still use
-  type validation. In 0.1.0, whitespace-only strings are not empty.
+  type validation. In the current API, whitespace-only strings are not empty.
 - Preserve strict TypeScript, modern ESM, and framework independence.
 - Use semantic native controls, associated labels/descriptions, announced
   errors, predictable focus, and keyboard-operable navigation. Treat WCAG 2.2

@@ -1,4 +1,13 @@
+<a href="https://gustavoaroberto.github.io/demetria/">
+  <img src="./website/assets/demetria-logo.svg" width="400" alt="Demetria — schema-driven form journeys" />
+</a>
+
 # Demetria
+
+[![npm version](https://img.shields.io/npm/v/demetria?style=flat-square&color=6f7c45&labelColor=22261d)](https://www.npmjs.com/package/demetria)
+[![GitHub release](https://img.shields.io/github/v/release/gustavoaroberto/demetria?style=flat-square&color=c79a3b&labelColor=22261d)](https://github.com/gustavoaroberto/demetria/releases)
+[![CI](https://github.com/gustavoaroberto/demetria/actions/workflows/ci.yml/badge.svg)](https://github.com/gustavoaroberto/demetria/actions/workflows/ci.yml)
+[![MIT license](https://img.shields.io/github/license/gustavoaroberto/demetria?style=flat-square&color=6f7c45&labelColor=22261d)](./LICENSE)
 
 **Schema-driven forms for any JavaScript application.**
 
@@ -12,8 +21,9 @@ form crossed multiple HTML pages and needed predictable validation and state
 continuity. Demetria keeps that coordination in the browser without requiring a
 frontend framework or client-side router.
 
-Version 0.1.0 is the first functional release. Previously published 0.0.x
-versions do not provide this API and should not be used.
+Version 0.1.0 was the first functional release; 0.1.1 adds accessibility fixes
+without changing its public API. Previously published 0.0.x versions do not
+provide this API and should not be used.
 
 ## Features
 
@@ -31,8 +41,9 @@ through a standard ESM-aware bundler or serve the built module and application
 from the same HTTP origin. The development and CI version is Node.js 24.
 
 No compatibility claim is made for older browsers. Accessibility follows
-WCAG 2.2 AA as a design target, but this release has not received a formal
-accessibility audit and does not claim conformance.
+WCAG 2.2 AA as a design target. A targeted automated and code audit is
+documented, but no claim of WCAG conformance is made without broader manual
+assistive-technology testing.
 
 ## Installation
 
@@ -42,7 +53,7 @@ Install the published package:
 npm install demetria
 ```
 
-Confirm that npm resolves version 0.1.0 or newer. Older 0.0.x artifacts are not
+Confirm that npm resolves version 0.1.1 or newer. Older 0.0.x artifacts are not
 functional releases.
 
 ## Quick start
@@ -122,7 +133,7 @@ property has exactly the same behavior as `required: false`.
 ```
 
 An empty optional field passes validation. A non-empty optional value is still
-validated according to its field type. In 0.1.0, only `""`, `null`, and
+validated according to its field type. In 0.1.1, only `""`, `null`, and
 `undefined` count as empty; whitespace-only text is not trimmed and therefore
 passes required text validation.
 
@@ -145,7 +156,7 @@ their fields, announced using live/alert semantics, and the first invalid
 control receives focus.
 
 Custom and asynchronous validation, conditional fields, nested value paths,
-and custom field plugins are not implemented in 0.1.0.
+and custom field plugins are not implemented in 0.1.1.
 
 ## Persistence and separate pages
 
@@ -209,12 +220,13 @@ Contributing pages. The published site is available at
 The [accessibility audit](./docs/accessibility-audit.md) records verified fixes
 and remaining manual checks without making a conformance claim.
 
-Build the documentation artifact, serve it over HTTP, then open its home page:
+Use the hosted documentation and runnable examples:
 
-- [Single-page example](https://github.com/gustavoaroberto/demetria/tree/main/examples/single-page)
-- [Multi-page example](https://github.com/gustavoaroberto/demetria/tree/main/examples/multi-page)
+- [Documentation](https://gustavoaroberto.github.io/demetria/)
+- [Single-page example](https://gustavoaroberto.github.io/demetria/examples/single-page/)
+- [Multi-page example](https://gustavoaroberto.github.io/demetria/examples/multi-page/page-one.html)
 
-For example:
+To run the same artifact locally:
 
 ```sh
 npm run docs:build

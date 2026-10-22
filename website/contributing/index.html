@@ -13,7 +13,11 @@
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="../"
-          ><span class="brand-mark" aria-hidden="true">{D}</span>Demetria</a
+          ><img
+            class="brand-mark"
+            src="../assets/demetria-mark.svg"
+            alt=""
+          />Demetria</a
         >
         <nav class="desktop-nav" aria-label="Primary">
           <ul>
@@ -83,7 +87,9 @@ npm run check</code></pre>
 npm run typecheck
 npm test
 npm run build
-npm run docs:check</code></pre>
+npm run docs:check
+npm run test:a11y
+npm pack --dry-run</code></pre>
         <p>
           Use Conventional Commits. Add focused tests for behavior changes and
           keep README, website, and examples synchronized with the actual
@@ -116,7 +122,7 @@ npm run docs:check</code></pre>
     </main>
     <footer class="site-footer">
       <div class="site-footer__inner">
-        <span>Demetria v0.1.0 · MIT License</span
+        <span>Demetria v0.1.1 · MIT License</span
         ><a href="https://github.com/gustavoaroberto/demetria/issues">Issues</a>
       </div>
     </footer>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" role="img" aria-labelledby="title description">
+  <title id="title">Demetria</title>
+  <desc id="description">Schema-driven forms for any JavaScript application</desc>
+  <rect width="480" height="120" rx="20" fill="#171914" />
+  <g transform="translate(24 24)">
+    <rect x="1" y="1" width="70" height="70" rx="19" fill="#22261d" stroke="#6f7c45" stroke-width="2" />
+    <g fill="none" stroke-linecap="round">
+      <circle cx="36" cy="36" r="23" stroke="#93a060" stroke-width="4" stroke-dasharray="110 35" transform="rotate(-48 36 36)" />
+      <circle cx="36" cy="36" r="15" stroke="#c79a3b" stroke-width="4" stroke-dasharray="65 30" transform="rotate(54 36 36)" />
+      <circle cx="36" cy="36" r="7" stroke="#e4c777" stroke-width="3" stroke-dasharray="29 15" transform="rotate(-72 36 36)" />
+    </g>
+    <circle cx="36" cy="36" r="2.75" fill="#e4c777" />
+  </g>
+  <text x="116" y="59" fill="#f6f2e8" font-family="Georgia, 'Times New Roman', serif" font-size="43" font-weight="700" letter-spacing="-1">Demetria</text>
+  <text x="118" y="82" fill="#c8c1b2" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="1.2">SCHEMA-DRIVEN FORM JOURNEYS</text>
+</svg>

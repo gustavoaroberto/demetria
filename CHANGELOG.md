@@ -7,6 +7,13 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+### Changed
+
+- Introduced Demetria's olive-and-harvest identity across the README,
+  documentation website, examples, logo, and favicon.
+
+## [0.1.1] - 2026-10-21
+
 ### Added
 
 - Browser accessibility regression coverage with Playwright and axe-core.
@@ -45,4 +52,6 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
   form implementation and should not be used. Version 0.1.0 is the first
   functional public release.
 
+[Unreleased]: https://github.com/gustavoaroberto/demetria/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/gustavoaroberto/demetria/releases/tag/v0.1.1
 [0.1.0]: https://github.com/gustavoaroberto/demetria/releases/tag/v0.1.0

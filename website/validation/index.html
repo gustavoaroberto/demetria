@@ -16,7 +16,11 @@
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="../"
-          ><span class="brand-mark" aria-hidden="true">{D}</span>Demetria</a
+          ><img
+            class="brand-mark"
+            src="../assets/demetria-mark.svg"
+            alt=""
+          />Demetria</a
         >
         <nav class="desktop-nav" aria-label="Primary">
           <ul>
@@ -75,7 +79,7 @@
 { name: 'email', type: 'email', label: 'Email' } // optional</code></pre>
         <div class="callout callout--warning">
           <p>
-            <strong>Whitespace detail:</strong> v0.1.0 considers only
+            <strong>Whitespace detail:</strong> v0.1.1 considers only
             <code>''</code>, <code>null</code>, and
             <code>undefined</code> empty. A whitespace-only text value therefore
             passes required validation.
@@ -144,7 +148,7 @@ Complete the form to inspect its values.</pre>
         </div>
         <h2 id="limits">Current limits</h2>
         <p>
-          Validation messages are built in and English-only. v0.1.0 has no
+          Validation messages are built in and English-only. v0.1.1 has no
           custom validators, asynchronous validation, cross-field rules, or
           server-error API. Validate again on the server for every submission;
           browser validation is a usability feature, not a security boundary.
@@ -153,7 +157,7 @@ Complete the form to inspect its values.</pre>
     </main>
     <footer class="site-footer">
       <div class="site-footer__inner">
-        <span>Demetria v0.1.0 · MIT License</span
+        <span>Demetria v0.1.1 · MIT License</span
         ><a href="../accessibility/">Accessibility details</a>
       </div>
     </footer>

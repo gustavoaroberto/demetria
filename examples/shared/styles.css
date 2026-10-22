@@ -1,13 +1,14 @@
 :root {
   color-scheme: dark;
-  --ink: #11121b;
-  --surface: #1e2030;
-  --line: #727498;
-  --text: #f4f0ff;
-  --muted: #c3bed2;
-  --accent: #b8a4ff;
-  --accent-ink: #181421;
-  --danger: #ffb2bd;
+  --ink: #12140f;
+  --surface: #22261d;
+  --line: #858e6d;
+  --text: #f6f2e8;
+  --muted: #c8c1b2;
+  --olive: #aebd78;
+  --accent: #e4c777;
+  --accent-ink: #1b1d14;
+  --danger: #ffb4a8;
   font-family:
     Inter,
     ui-sans-serif,
@@ -28,12 +29,13 @@ body {
   margin: 0;
   color: var(--text);
   background:
-    radial-gradient(circle at 80% 0, rgb(184 164 255 / 14%), transparent 30rem),
+    radial-gradient(circle at 82% 0, rgb(199 154 59 / 10%), transparent 28rem),
+    radial-gradient(circle at 12% 40%, rgb(111 124 69 / 9%), transparent 32rem),
     var(--ink);
   line-height: 1.65;
 }
 a {
-  color: #d4c9ff;
+  color: var(--accent);
   text-underline-offset: 0.18em;
 }
 :focus-visible {
@@ -57,7 +59,7 @@ a {
 }
 .example-header {
   border-bottom: 1px solid var(--line);
-  background: rgb(17 18 27 / 90%);
+  background: rgb(18 20 15 / 92%);
 }
 .example-header__inner,
 .example-shell {
@@ -72,12 +74,17 @@ a {
   gap: 1rem;
 }
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   color: var(--text);
   font-weight: 850;
   text-decoration: none;
 }
-.brand span {
-  color: var(--accent);
+
+.brand-mark {
+  width: 2rem;
+  height: 2rem;
 }
 .presentation-toggle {
   min-height: 2.6rem;
@@ -104,7 +111,7 @@ a {
 }
 .eyebrow {
   margin: 0 0 0.65rem;
-  color: var(--accent);
+  color: var(--olive);
   font-size: 0.78rem;
   font-weight: 850;
   letter-spacing: 0.12em;
@@ -139,7 +146,7 @@ h1 {
   padding: clamp(1.2rem, 4vw, 2.2rem);
   border: 1px solid var(--line);
   border-radius: 1.2rem;
-  background: linear-gradient(145deg, rgb(41 43 64 / 94%), rgb(26 27 42 / 98%));
+  background: rgb(34 38 29 / 96%);
   box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 30%);
 }
 .result-card {
@@ -152,7 +159,7 @@ h1 {
   overflow-x: auto;
   margin: 0;
   padding: 1rem;
-  background: #13141e;
+  background: #141710;
   border-radius: 0.65rem;
 }
 .privacy-note {
@@ -210,8 +217,8 @@ body:not(.example--native) .demetria__control {
   min-height: 2.9rem;
   padding: 0.65rem 0.75rem;
   color: var(--text);
-  background: #171824;
-  border: 1px solid #686a8b;
+  background: #181b15;
+  border: 1px solid var(--line);
   border-radius: 0.6rem;
   font: inherit;
 }

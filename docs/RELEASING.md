@@ -34,15 +34,18 @@ runtime dependencies. Build and serve the examples over HTTP rather than using
 
 After review and owner approval:
 
+Replace `X.Y.Z` with the version already recorded in `package.json` and the
+changelog.
+
 ```sh
 git add -A
-git commit -m "feat: release demetria v0.1.0"
-git tag -a v0.1.0 -m "Demetria v0.1.0"
+git commit -m "chore: release demetria vX.Y.Z"
+git tag -a vX.Y.Z -m "Demetria vX.Y.Z"
 git push origin main
-git push origin v0.1.0
+git push origin vX.Y.Z
 npm publish
 ```
 
-Finally, create GitHub release `v0.1.0` manually using the matching changelog
+Finally, create GitHub release `vX.Y.Z` manually using the matching changelog
 entry. Do not claim that the Markdown documentation is a deployed GitHub Pages
 site unless Pages has separately been configured and verified.

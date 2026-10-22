@@ -1,20 +1,21 @@
 :root {
   color-scheme: dark;
-  --ink-950: #10111a;
-  --ink-900: #151622;
-  --ink-850: #1a1b29;
-  --surface: #222335;
-  --surface-raised: #2a2b40;
-  --border: #41425d;
-  --border-strong: #6d6e91;
-  --text: #f3effd;
-  --text-muted: #bdb8ce;
-  --accent: #b6a1ff;
-  --accent-strong: #d1c5ff;
-  --accent-ink: #171321;
-  --danger: #ffb4bd;
-  --success: #9fe3c1;
-  --code: #171823;
+  --ink-950: #10120e;
+  --ink-900: #171914;
+  --ink-850: #1c2018;
+  --surface: #22261d;
+  --surface-raised: #2b3024;
+  --border: #4b533e;
+  --border-strong: #858e6d;
+  --text: #f6f2e8;
+  --text-muted: #c8c1b2;
+  --olive: #aebd78;
+  --accent: #e4c777;
+  --accent-strong: #f0d992;
+  --accent-ink: #1b1d14;
+  --danger: #ffb4a8;
+  --success: #bad79c;
+  --code: #141710;
   --shadow: 0 24px 70px rgb(0 0 0 / 30%);
   --radius-sm: 0.55rem;
   --radius-md: 1rem;
@@ -46,12 +47,9 @@ body {
   margin: 0;
   color: var(--text);
   background:
-    radial-gradient(
-      circle at 82% 5%,
-      rgb(182 161 255 / 12%),
-      transparent 28rem
-    ),
-    linear-gradient(180deg, var(--ink-900), var(--ink-950) 36rem);
+    radial-gradient(circle at 84% 4%, rgb(199 154 59 / 9%), transparent 26rem),
+    radial-gradient(circle at 12% 28%, rgb(111 124 69 / 8%), transparent 32rem),
+    linear-gradient(180deg, var(--ink-900), var(--ink-950) 38rem);
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -63,7 +61,7 @@ a {
 }
 
 a:hover {
-  color: #fff;
+  color: var(--text);
 }
 
 :focus-visible {
@@ -92,8 +90,8 @@ a:hover {
   position: sticky;
   z-index: 20;
   top: 0;
-  border-bottom: 1px solid rgb(98 99 131 / 45%);
-  background: rgb(16 17 26 / 88%);
+  border-bottom: 1px solid rgb(111 124 69 / 48%);
+  background: rgb(16 18 14 / 90%);
   backdrop-filter: blur(1rem);
 }
 
@@ -126,15 +124,9 @@ a:hover {
 }
 
 .brand-mark {
-  display: grid;
+  display: block;
   width: 2rem;
   height: 2rem;
-  place-items: center;
-  color: var(--accent-ink);
-  background: var(--accent);
-  border-radius: 0.55rem 0.55rem 0.55rem 0.16rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.86rem;
 }
 
 .desktop-nav ul,
@@ -208,7 +200,7 @@ a:hover {
 
 .eyebrow {
   margin: 0 0 0.8rem;
-  color: var(--accent);
+  color: var(--olive);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.78rem;
   font-weight: 800;
@@ -229,6 +221,11 @@ h1 {
   max-width: 16ch;
   margin-bottom: 1.4rem;
   font-size: clamp(2.65rem, 7vw, 5.8rem);
+}
+
+.hero h1 {
+  max-width: 18ch;
+  font-size: clamp(2.65rem, 6vw, 4.8rem);
 }
 
 .page-title {
@@ -302,7 +299,7 @@ ol {
 .callout,
 .demo-panel {
   border: 1px solid var(--border);
-  background: linear-gradient(145deg, rgb(42 43 64 / 88%), rgb(28 29 45 / 96%));
+  background: rgb(34 38 29 / 94%);
   box-shadow: var(--shadow);
 }
 
@@ -310,6 +307,16 @@ ol {
   overflow: hidden;
   border-radius: var(--radius-lg);
   transform: rotate(1deg);
+  background:
+    radial-gradient(
+      circle at 88% 18%,
+      transparent 0 2.8rem,
+      rgb(111 124 69 / 22%) 2.9rem 3rem,
+      transparent 3.1rem 5rem,
+      rgb(199 154 59 / 17%) 5.1rem 5.2rem,
+      transparent 5.3rem
+    ),
+    var(--surface);
 }
 
 .terminal-card__bar {
@@ -324,7 +331,7 @@ ol {
   width: 0.62rem;
   height: 0.62rem;
   border-radius: 50%;
-  background: var(--border-strong);
+  background: var(--olive);
 }
 
 .terminal-card pre {
@@ -373,7 +380,7 @@ ol {
 .feature-number {
   display: block;
   margin-bottom: 2rem;
-  color: var(--accent);
+  color: var(--olive);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.78rem;
 }
@@ -454,7 +461,7 @@ pre {
 code {
   padding: 0.12em 0.34em;
   color: var(--accent-strong);
-  background: rgb(182 161 255 / 10%);
+  background: rgb(228 199 119 / 10%);
   border-radius: 0.28rem;
   font-size: 0.9em;
 }
@@ -463,7 +470,7 @@ pre {
   overflow-x: auto;
   margin: 1.3rem 0;
   padding: 1.2rem;
-  color: #ede9fb;
+  color: var(--text);
   background: var(--code);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -503,7 +510,7 @@ pre code {
 table {
   width: 100%;
   border-collapse: collapse;
-  background: rgb(28 29 45 / 70%);
+  background: rgb(28 32 24 / 72%);
   font-size: 0.9rem;
 }
 
